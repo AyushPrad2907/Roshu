@@ -34,7 +34,6 @@
     font-family: var(--font-body);
     font-weight: 300;
     overflow-x: hidden;
-    cursor: none;
   }
 
   /* CUSTOM CURSOR */
@@ -1728,8 +1727,8 @@ function spawnEnhancedPetal() {
 
 
 function animateGlow() {
-  gx += (mx - gx) * 0.12;
-  gy += (my - gy) * 0.12;
+  gx += (mx - gx) * 0.35;
+  gy += (my - gy) * 0.35;
   cursorGlow.style.transform = `translate(${gx - 20}px, ${gy - 20}px)`;
   requestAnimationFrame(animateGlow);
 }
