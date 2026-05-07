@@ -278,6 +278,17 @@
     filter: blur(80px);
     animation: orbFloat 8s ease-in-out infinite alternate;
   }
+  .floating-heart {
+    position: absolute;
+    color: rgba(216,124,146,0.28);
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    text-shadow: 0 0 18px rgba(241,188,200,0.5);
+    animation: heartDrift 9s ease-in-out infinite;
+    user-select: none;
+  }
+  .heart1 { top: 18%; left: 12%; animation-delay: 0s; }
+  .heart2 { top: 28%; right: 16%; animation-delay: -3s; }
+  .heart3 { bottom: 20%; left: 18%; animation-delay: -6s; }
   .orb1 {
     width: 500px; height: 500px;
     background: rgba(216,124,146,0.18);
@@ -300,6 +311,10 @@
   @keyframes orbFloat {
     0% { transform: translate(0,0) scale(1); }
     100% { transform: translate(30px, 20px) scale(1.1); }
+  }
+  @keyframes heartDrift {
+    0%, 100% { transform: translateY(0) rotate(-4deg); opacity: 0.25; }
+    50% { transform: translateY(-16px) rotate(4deg); opacity: 0.55; }
   }
   .hero-content {
     position: relative;
@@ -1085,6 +1100,9 @@
   <div class="ambient-orb orb1"></div>
   <div class="ambient-orb orb2"></div>
   <div class="ambient-orb orb3"></div>
+  <span class="floating-heart heart1" aria-hidden="true">♥</span>
+  <span class="floating-heart heart2" aria-hidden="true">♥</span>
+  <span class="floating-heart heart3" aria-hidden="true">♥</span>
   <span class="secret-star" onclick="openEgg()" title="">★</span>
   <div class="hero-content">
     <p class="hero-eyebrow">A Digital Memory Journal</p>
