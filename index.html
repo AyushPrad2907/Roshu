@@ -8,34 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fff6f5;
-    --bg2: #f8e8e6;
-    --warm-white: #fffdfb;
-    --muted: #a38389;
-    --rose-gold: #d87c92;
-    --rose-light: #f1bcc8;
-    --burgundy: #8f3a54;
-    --burgundy-deep: #5f2238;
-    --glass: rgba(255,255,255,0.42);
-    --glass-border: rgba(216,124,146,0.18);
-    --glow: rgba(216,124,146,0.18);
-    --font-display: 'Cormorant Garamond', serif;
-    --font-title: 'Cinzel', serif;
-    --font-body: 'DM Sans', sans-serif;
-  }
-
-  /* SEASONAL MODES */
-  body[data-season='valentine'] {
     --bg: #fff2f6;
+    --bg2: #ffe4f0;
+    --warm-white: #fffdfb;
+    --muted: #c75f7f;
     --rose-gold: #e94b7f;
     --rose-light: #ff69b4;
     --burgundy: #c1184f;
-  }
-  body[data-season='anniversary'] {
-    --bg: #fffaf5;
-    --rose-gold: #d4a574;
-    --rose-light: #e8c9a0;
-    --burgundy: #8b4513;
+    --burgundy-deep: #8b0a3d;
+    --glass: rgba(255,255,255,0.42);
+    --glass-border: rgba(233,75,127,0.18);
+    --glow: rgba(233,75,127,0.18);
+    --font-display: 'Cormorant Garamond', serif;
+    --font-title: 'Cinzel', serif;
+    --font-body: 'DM Sans', sans-serif;
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -318,28 +304,6 @@
     transition: color 0.3s;
   }
   .nav-links a:hover { color: var(--burgundy); }
-  .season-toggle {
-    background: none;
-    border: 1px solid var(--rose-gold);
-    color: var(--rose-gold);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: var(--font-body);
-    font-weight: 500;
-  }
-  .season-toggle:hover {
-    background: var(--rose-gold);
-    color: var(--bg);
-  }
-  .season-toggle.active {
-    background: var(--rose-gold);
-    color: var(--bg);
-  }
   .hamburger {
     display: none;
     flex-direction: column;
@@ -1146,7 +1110,6 @@
   /* RESPONSIVE */
   @media (max-width: 900px) {
     .nav-links { display: none; }
-    .season-toggle { display: none; }
     .hamburger { display: flex; }
     .counter-grid { grid-template-columns: repeat(3, 1fr); }
     .timeline-item { grid-template-columns: 1fr; gap: 1.5rem; direction: ltr !important; }
@@ -1222,11 +1185,6 @@
     <li><a href="#future">Future</a></li>
     <li><a href="#ending">Forever</a></li>
   </ul>
-  <div style="display: flex; gap: 1rem; align-items: center;">
-    <button class="season-toggle" onclick="toggleSeason('romantic')">Default</button>
-    <button class="season-toggle" onclick="toggleSeason('valentine')">Valentine</button>
-    <button class="season-toggle" onclick="toggleSeason('anniversary')">Anniversary</button>
-  </div>
   <button class="hamburger" onclick="toggleMobile()" id="hamburger">
     <span></span><span></span><span></span>
   </button>
@@ -1639,24 +1597,7 @@ function spawnEnhancedPetal() {
   window.setTimeout(() => petal.remove(), duration * 1000);
 }
 
-// ── SEASONAL MODE ─────────────────────────────────────────────
-let currentSeason = 'romantic';
-function toggleSeason(season) {
-  currentSeason = season;
-  const buttons = document.querySelectorAll('.season-toggle');
-  buttons.forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-  
-  if (season === 'romantic') {
-    document.body.removeAttribute('data-season');
-  } else {
-    document.body.setAttribute('data-season', season);
-  }
-}
-// Set default active button
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.season-toggle')[0]?.classList.add('active');
-});
+
 
 
 function animateGlow() {
